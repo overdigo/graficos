@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dynamic Graph Page</title>
+		<style>
+			#controls{text-align:center;margin-top:20px}
+			#graphImg{display:block;margin:0 auto}
+		</style>
+	</head>
+	<body>
+		<div id="controls">
+			<label for="tickerInput">Ticker:</label>
+			<input type="text" id="tickerInput" value="IFIX">
+			<label for="pInput">Period:</label>    
+			<input type="number" id="pInput" value="3">
+			<label>Chart Type:</label>
+			<input type="radio" id="lineChart" name="chartType" value="0">
+			<label for="lineChart">Line</label>
+			<input type="radio" id="candleChart" name="chartType" value="2" checked>
+			<label for="candleChart">Candle</label>
+			<label>Volume:</label>
+			<input type="checkbox" id="volToggle">
+		</div>
+		<img id="graphImg" src="https://br.advfn.com/p.php?pid=staticchart&s=IFIX&t=23&p=3&dm=2&vol=0&width=1260&height=640">
+		<script>
+			const tickerInput = document.getElementById("tickerInput");
+			const pInput = document.getElementById("pInput");
+			const lineChart = document.getElementById("lineChart");
+			const candleChart = document.getElementById("candleChart");
+			const volToggle = document.getElementById("volToggle");
+			const img = document.getElementById("graphImg");
+			function updateGraph() {
+				let ticker = tickerInput.value;
+				let p = pInput.value;
+				let chartType;
+				if (lineChart.checked) { chartType = 0; }
+				else if (candleChart.checked) { chartType = 2; }
+				let vol;
+				if (volToggle.checked) { vol = 1; }
+				else { vol = 0; }
+				let imgSrc = "https://br.advfn.com/p.php?pid=staticchart&s=" + ticker + "&t=23&p=" + p + "&dm=" + chartType + "&vol=" + vol + "&width=1260&height=640";
+				img.src = imgSrc;    //https://br.advfn.com/p.php?alt_background=FFFFFF&branding_image=http%3A%2F%2Fimages.advfn.com%2Fimagesnew%2F2%2Fbr%2Fpquote%2Fpquote-branding-advfn.jpg&hr_primary_color=c5c5c5&hr_secondary_color=ffffff&main_background_color=f0f0f0&pid=pquote&symbol=ibov&text_primary_color=000000&text_secondary_color=ffffff&th_background_color=9bc7d8&th_border_color=4e7787&value_down=c20000&value_up=1c8f34
+			}
+			// Update on input changes  
+			tickerInput.addEventListener('input', updateGraph);
+			pInput.addEventListener('input', updateGraph);
+			lineChart.addEventListener('change', updateGraph);
+			candleChart.addEventListener('change', updateGraph);  
+			volToggle.addEventListener('change', updateGraph);
+		</script>
+	</body>
+</html>
