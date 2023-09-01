@@ -1,0 +1,151 @@
+<html lang="pt" dir="ltr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Gráfico da B3 ou exterior</title>
+		<meta name="description" content="Gráfico da B3 ou exterior" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="dns-prefetch" href="https://s3.tradingview.com">
+		<link rel="dns-prefetch" href="https://s.tradingview.com">
+		<link rel="dns-prefetch" href="https://static.tradingview.com">
+		<link rel="dns-prefetch" href="https://s3.amazonaws.com">
+		<link rel="preload" as="script" href="https://s3.tradingview.com/tv.js">
+		<style>
+			.radio-buttons{width:100%;height:3%}
+			.graf{width:100%;height:97%}
+		</style> 
+	</head> 
+	<body> 
+		<div class="radio-buttons"> 
+			<input type="radio" name="chart" id="brazil">
+			<label for="brazil">Brazil</label> 
+			<input type="radio" name="chart" id="us" checked>
+			<label for="us">US</label> 
+		</div> 
+		<div class="graf" id="tradingview_eee"></div>
+		<div class="graf" id="tradingview_bbc40" style="display:none;"></div>
+		<script>	
+			function updateChart() {
+				var brazilChart = document.getElementById("tradingview_bbc40");
+				var usChart = document.getElementById("tradingview_eee");
+				
+				if (document.getElementById("us").checked) {
+					usChart.style.display = "block";
+					brazilChart.style.display = "none";
+					} else {
+					usChart.style.display = "none";
+					brazilChart.style.display = "block";
+				}
+			} 
+			document.querySelectorAll('input[name="chart"]').forEach(function(radio) {
+				radio.addEventListener("change", updateChart);
+			});	
+		</script>
+		<!--Editar em:	  https://www.tradingview.com/widget/advanced-chart/         -->
+		<script type="text/javascript" src="https://s3.amazonaws.com/tradingview/tv.js"></script>
+		<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+		<script type="text/javascript">
+			new TradingView.widget({
+				"container_id": "tradingview_bbc40",
+				"autosize": true,
+				"symbol": "WINV2023",
+				"interval": "D",
+				"timezone": "America/Sao_Paulo",
+				"theme": "light",
+				"style": "1",
+				"locale": "br",
+				"toolbar_bg": "#f1f3f6",
+				"hide_top_toolbar": false,
+				"withdateranges": true,
+				"enable_publishing": false,
+				"save_image": false,
+				"hide_top_toolbar": false,
+				"hide_side_toolbar": false,
+				"allow_symbol_change": true,
+				"hideideas": false,
+				"details": true,
+				"hotlist": true,
+				"calendar": true,
+				"studies": [
+				"STD;Gaps"
+				],
+				"watchlist": [
+				"IBOV",
+				"WINV2023",//G,J,M,Q,V,Z
+				"WDOU2023",//F,G,H,J,K,M,N,Q,U,V,X,Z
+				"IFIX",
+				"IFIL",
+				"XFIQ2023",
+				"HFOF11",
+				"HGRU11",
+				"PORD11",
+				"BTLG11",
+				"RBRF11",
+				"PRIO3",
+				"BPAC11",
+				"EQTL3",
+				"FLRY3",
+				"LJQQ3"
+				],
+				"show_popup_button": true,
+				"popup_width": "1000",
+				"popup_height": "650",
+				"customer": "bovespa"
+				//"customer": "moneytimescombr"
+			});
+		</script>
+		<script type="text/javascript">
+			new TradingView.widget(
+			{
+				"autosize": true,
+				"symbol": "CBOE:SPX",
+				"interval": "D",
+				"timezone": "America/Sao_Paulo",
+				"theme": "light",
+				"style": "1",
+				"locale": "en",
+				"toolbar_bg": "#f1f3f6",
+				"enable_publishing": false,
+				"hide_top_toolbar": false,
+				"allow_symbol_change": true,
+				"save_image": false,
+				"container_id": "tradingview_eee",
+				"hide_side_toolbar": false,
+				"details": true,
+				"hotlist": true,
+				"calendar": true,
+				"studies": [
+				"STD;Gaps"
+				],
+				"watchlist": [
+				"CBOE:SPX",
+				"ES1!",
+				"CME_MINI:NQ1!",
+				"NYMEX:CL1!",
+				"FX:EURUSD",
+				"FX_IDC:USDBRL",
+				"AMEX:EWZ",
+				"NYSE:PBR",
+				"NYSE:VALE",
+				"NYSE:GM",
+				"NASDAQ:INTC",
+				"NYSE:JNJ",
+				"NYSE:PG",
+				"NYSE:DIS",
+				"NASDAQ:NFLX",				
+				"NYSE:ITUB",
+				"NYSE:BBD",
+				"NASDAQ:XP",
+				"NASDAQ:STNE",
+				"NYSE:PAGS",
+				"NASDAQ:INTR",
+				"NYSE:NU"
+				],
+				"show_popup_button": true,
+				"popup_width": "1000",
+				"popup_height": "650",
+				"customer": "investopedia"
+				//"customer": "fxstreet"
+			});
+		</script>
+	</body>
+</html>
